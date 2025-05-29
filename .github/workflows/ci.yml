@@ -9,11 +9,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Build project
+      - name: Set up ESP-IDF
         uses: espressif/esp-idf-ci-action@v1
         with:
           esp_idf_version: 'v5.1.2' # You can specify a version here, or let it use the latest stable
           target: esp32s3 # Specify your target here
+
+      - name: Build project
         run: |
           echo "IDF_PATH is: $IDF_PATH"
           ls -la $IDF_PATH/examples/get-started/hello_world
